@@ -17,12 +17,22 @@
 
 package ltl.equivalence;
 
-import jdd.bdd.BDD;
-import ltl.*;
-import ltl.visitors.Visitor;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.BitSet;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
+
+import jdd.bdd.BDD;
+import ltl.BooleanConstant;
+import ltl.Conjunction;
+import ltl.Disjunction;
+import ltl.Formula;
+import ltl.Literal;
+import ltl.visitors.Visitor;
 
 public class BDDEquivalenceClassFactory implements EquivalenceClassFactory {
 
@@ -277,7 +287,8 @@ public class BDDEquivalenceClassFactory implements EquivalenceClassFactory {
             int bdd = supportBdd;
 
             while (bdd >= 2) {
-                support.add(reverseMapping.get(factory.getVar(bdd)));
+                Formula toAdd = reverseMapping.get(factory.getVar(bdd));
+                support.add(toAdd);
                 bdd = factory.getHigh(bdd);
             }
 

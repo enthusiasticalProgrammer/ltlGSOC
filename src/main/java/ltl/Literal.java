@@ -17,13 +17,17 @@
 
 package ltl;
 
+import java.util.BitSet;
+
+import com.google.common.collect.BiMap;
+
 import ltl.visitors.BinaryVisitor;
 import ltl.visitors.Visitor;
 import ltl.visitors.VoidVisitor;
 
-import java.util.BitSet;
-
 public final class Literal extends ImmutableObject implements Formula {
+
+    public static BiMap<String, Integer> mapping;
 
     private final int atom;
 
@@ -41,7 +45,11 @@ public final class Literal extends ImmutableObject implements Formula {
 
     @Override
     public String toString() {
-        return (isNegated() ? "!p" : "p") + getAtom();
+        if (mapping == null) {
+            return (isNegated() ? "!p" : "p") + getAtom();
+        } else {
+            return (isNegated() ? "!" : "") + mapping.inverse().get(getAtom());
+        }
     }
 
     @Override

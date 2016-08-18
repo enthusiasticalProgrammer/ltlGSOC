@@ -17,12 +17,16 @@
 
 package ltl;
 
-import com.google.common.collect.ImmutableSet;
-
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
+
+import com.google.common.collect.ImmutableSet;
 
 public abstract class PropositionalFormula extends ImmutableObject implements Formula {
 
@@ -49,7 +53,7 @@ public abstract class PropositionalFormula extends ImmutableObject implements Fo
         Iterator<Formula> iter = children.iterator();
 
         while (iter.hasNext()) {
-            s.append(iter.next());
+            s.append(iter.next().toString());
 
             if (iter.hasNext()) {
                 s.append(getOperator());

@@ -17,12 +17,13 @@
 
 package ltl;
 
+import java.util.BitSet;
+
+import javax.annotation.Nonnull;
+
 import ltl.visitors.BinaryVisitor;
 import ltl.visitors.Visitor;
 import ltl.visitors.VoidVisitor;
-
-import javax.annotation.Nonnull;
-import java.util.BitSet;
 
 public final class BooleanConstant extends ImmutableObject implements Formula {
 

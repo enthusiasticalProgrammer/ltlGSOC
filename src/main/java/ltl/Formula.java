@@ -17,11 +17,11 @@
 
 package ltl;
 
+import java.util.BitSet;
+
 import ltl.visitors.BinaryVisitor;
 import ltl.visitors.Visitor;
 import ltl.visitors.VoidVisitor;
-
-import java.util.BitSet;
 
 public interface Formula {
 
@@ -55,4 +55,6 @@ public interface Formula {
     Formula temporalStep(BitSet valuation);
 
     Formula unfold();
+
+    String toString();
 }
